@@ -14,12 +14,14 @@ function App() {
 
     const saveFirstName = (e) => {
         setFirstName(e.target.value);
+        setFullName("");
     };
     const saveLastName = (e) => {
         setLastName(e.target.value);
+        setFullName("");
     };
 
-    const shouldShowFullName =fullName !=="" ? "block" :  "none";
+    const shouldShowFullName = fullName !== "";
     console.log(shouldShowFullName);
     return (
         <div className="App">
@@ -39,9 +41,9 @@ function App() {
                 </div>
                 <button type="submit">Submit</button>
             </form>
-            <div style={{display:`${shouldShowFullName}`}}>
-                <p>Full Name: {fullName}</p>
-            </div>
+            {shouldShowFullName && (
+                <div>Full Name: {fullName}</div>
+            )}
         </div>
     );
 }
